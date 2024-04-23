@@ -1,7 +1,7 @@
 const getSubLink = function (urls, api, target, remoteConfig, isShowMoreConfig, moreConfig) {
   let linkLst = urls.split('\n');
   let link = linkLst.join('|');
-  let finalUrl = api + '/sub?target=' + target + '&url=' + encodeURIComponent(link);
+  let finalUrl = api + '/ss?target=' + target + '&url=' + encodeURIComponent(decodeURIComponent(link));
   if (remoteConfig) {
     finalUrl = finalUrl + '&config=' + encodeURIComponent(remoteConfig);
   }

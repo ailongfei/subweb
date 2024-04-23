@@ -10,7 +10,7 @@
                   <label class="form-label" for="add-user-email">订阅链接</label>
                   <textarea class="form-control" v-model.trim="urls" :placeholder="placeholder" rows="3"></textarea>
                 </div>
-                <div class="col-5 col-md-6">
+                <div class="col-12 col-md-12">
                   <label class="form-label" for="client">客户端</label>
                   <select class="form-select" id="client" v-model="target" @change="selectTarget">
                     <option v-for="option in targetOptions" :key="option" :value="option.value">
@@ -18,26 +18,26 @@
                     </option>
                   </select>
                 </div>
-                <div class="col-7 col-md-6">
+                <div v-if="false" class="col-7 col-md-6">
                   <label class="form-label" for="api">后端服务</label>
                   <select class="form-select" id="api" @change="selectApi">
                     <option :value="apiUrl">
                       {{ apiUrl }}
                     </option>
-                    <option value="manual">自定义后端 API 地址</option>
+                    <!-- <option value="manual">自定义后端 API 地址</option> -->
                   </select>
                 </div>
                 <div class="col-12 col-md-12" v-if="isShowManualApiUrl">
                   <input class="form-control" placeholder="自定义后端 API 地址示例：https://sub.ops.ci" v-model="api" />
                 </div>
                 <div class="col-8 col-md-10">
-                  <label class="form-label" for="remote">远程配置</label>
+                  <label class="form-label" for="remote">配置</label>
                   <select class="form-select" id="remote" @change="selectRemoteConfig">
-                    <option value="">默认配置</option>
+                    <!-- <option value="">默认配置</option> -->
                     <option v-for="option in remoteConfigOptions" :key="option" :value="option.value">
                       {{ option.text }}
                     </option>
-                    <option value="manual">自定义远程配置地址</option>
+                    <!-- <option value="manual">自定义远程配置地址</option> -->
                   </select>
                 </div>
                 <div class="col-4 col-md-2">
@@ -91,10 +91,10 @@
                 <div class="col-12 col-md-2">
                   <button type="button" class="btn btn-success" @click="getSubUrl()">转换</button>
                 </div>
-                <div class="col-12 col-md-10">
+                <div v-if="false" class="col-12 col-md-10">
                   <input class="form-control" placeholder="点击获取短链" v-model.trim="result.shortUrl" />
                 </div>
-                <div class="col-12 col-md-2">
+                <div v-if="false" class="col-12 col-md-2">
                   <button type="button" class="btn btn-primary" @click="getShortUrl()">短链</button>
                 </div>
               </div>
@@ -131,8 +131,8 @@ export default {
     return {
       placeholder: '多订阅链接或节点请确保每行一条\n支持手动使用"|"分割多链接或节点',
       targetOptions: [
-        { value: 'clash', text: 'Clash' },
         { value: 'clashr', text: 'ClashR' },
+        { value: 'clash', text: 'Clash' },
         { value: 'v2ray', text: 'V2Ray' },
         { value: 'quan', text: 'Quantumult' },
         { value: 'quanx', text: 'Quantumult X' },
@@ -159,8 +159,8 @@ export default {
       },
       urls: [],
       api: window.config.apiUrl,
-      target: 'clash',
-      remoteConfig: '',
+      target: 'clashr',
+      remoteConfig: window.config.remoteConfigOptions[0].value,
     };
   },
   methods: {

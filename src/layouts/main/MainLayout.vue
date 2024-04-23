@@ -9,9 +9,9 @@
     @wheel="setNavActive"
   >
     <body>
-      <nav-bar />
+      <!-- <nav-bar /> -->
       <router-view />
-      <footer-bar />
+      <!-- <footer-bar /> -->
     </body>
   </html>
 </template>
